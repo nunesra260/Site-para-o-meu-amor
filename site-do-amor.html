@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Meu Amor 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff0f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d6336c;
+      font-family: 'Georgia', serif;
+      margin: 30px 10px 10px;
+    }
+
+    .carousel {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel img {
+      width: 100%;
+      display: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .buttons {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+    }
+
+    .buttons button {
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .playlist {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .surprise {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .surprise button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .surprise button:hover {
+      transform: scale(1.05);
+    }
+
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      transform: rotate(45deg);
+      animation: float 4s linear infinite;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -20px;
+        opacity: 1;
+      }
+      100% {
+        bottom: 100%;
+        transform: translateX(-30px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Para o amor da minha vida 💖</h1>
+
+  <div class="carousel">
+    <img src="IMG-20240818-WA0064.jpg" class="active" />
+    <img src="IMG-20240915-WA0031.jpg" />
+    <img src="IMG-20240915-WA0158.jpg" />
+    <img src="IMG-20241028-WA0121(1).jpg" />
+    <img src="IMG-20241201-WA0059.jpg" />
+
+    <div class="buttons">
+      <button onclick="prevSlide()">⬅</button>
+      <button onclick="nextSlide()">➡</button>
+    </div>
+  </div>
+
+  <div style="margin: 30px 20px; text-align: center;">
+    <p style="font-size: 20px; color: #8b005d; font-style: italic;">
+      “Você sempre será meu primeiro, único e amor. Amar você é a melhor parte da minha vida. Eu te amo pra sempre.”
+    </p>
+  </div>
+
+  <div class="playlist">
+    <h2 style="color:#d6336c;">Nossa trilha sonora 🎶</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2d7JK8lUjmrHRqWBpDL7sn?utm_source=generator" width="90%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+  </div>
+
+  <div class="surprise">
+    <button onclick="mostrarMensagem()">Clique para uma surpresa 💌</button>
+  </div>
+
+  <script>
+    let current = 0;
+    const images = document.querySelectorAll('.carousel img');
+
+    function showSlide(index) {
+      images.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === index) img.classList.add('active');
+      });
+    }
+
+    function nextSlide() {
+      current = (current + 1) % images.length;
+      showSlide(current);
+    }
+
+    function prevSlide() {
+      current = (current - 1 + images.length) % images.length;
+      showSlide(current);
+    }
+
+    setInterval(nextSlide, 5000);
+
+    function mostrarMensagem() {
+      alert("Você sempre será meu primeiro, único e amor. Amar você é a melhor parte da minha vida. Eu te amo pra sempre 💖");
+    }
+
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(criarCoracao, 300);
+  </script>
+
+</body>
+</html>
