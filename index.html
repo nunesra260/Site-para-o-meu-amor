@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -86,6 +85,7 @@
       transform: scale(1.05);
     }
 
+    /* Corações flutuando */
     .heart {
       position: fixed;
       width: 20px;
@@ -134,11 +134,12 @@
 
   <h1>Para o amor da minha vida 💖</h1>
 
+  <!-- Carrossel -->
   <div class="carousel">
     <img src="IMG-20240818-WA0064.jpg" class="active" />
     <img src="IMG-20240915-WA0031.jpg" />
     <img src="IMG-20240915-WA0158.jpg" />
-    <img src="IMG-20241028-WA0121(1).jpg" />
+    <img src="IMG-20241028-WA0121-1.jpg" />
     <img src="IMG-20241201-WA0059.jpg" />
 
     <div class="buttons">
@@ -147,22 +148,30 @@
     </div>
   </div>
 
+  <!-- Mensagem Romântica -->
   <div style="margin: 30px 20px; text-align: center;">
     <p style="font-size: 20px; color: #8b005d; font-style: italic;">
       “Você sempre será meu primeiro, único e amor. Amar você é a melhor parte da minha vida. Eu te amo pra sempre.”
     </p>
   </div>
 
+  <!-- Playlist -->
   <div class="playlist">
     <h2 style="color:#d6336c;">Nossa trilha sonora 🎶</h2>
     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2d7JK8lUjmrHRqWBpDL7sn?utm_source=generator" width="90%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
   </div>
 
+  <!-- Botão surpresa com animação de gatinhos -->
   <div class="surprise">
-    <button onclick="mostrarMensagem()">Clique para uma surpresa 💌</button>
+    <button onclick="mostrarGatinhos()">Clique para uma surpresa 💌</button>
+    <div id="gatinho-container" style="display:none; margin-top: 20px;">
+      <img src="gatinhos-coracao.gif" alt="Gatinhos fofos" style="max-width: 300px; border-radius: 15px;" />
+    </div>
   </div>
 
+  <!-- Scripts -->
   <script>
+    // Carrossel
     let current = 0;
     const images = document.querySelectorAll('.carousel img');
 
@@ -185,10 +194,16 @@
 
     setInterval(nextSlide, 5000);
 
-    function mostrarMensagem() {
-      alert("Você sempre será meu primeiro, único e amor. Amar você é a melhor parte da minha vida. Eu te amo pra sempre 💖");
+    // Surpresa com gatinhos
+    function mostrarGatinhos() {
+      const container = document.getElementById("gatinho-container");
+      container.style.display = "block";
+      setTimeout(() => {
+        container.style.display = "none";
+      }, 5000); // Oculta após 5 segundos
     }
 
+    // Corações flutuando
     function criarCoracao() {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -202,3 +217,6 @@
 
 </body>
 </html>
+
+    
+   
